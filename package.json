@@ -1,5 +1,5 @@
 {
-  "name": "@th/access",
+  "name": "@teamawesome/access",
   "version": "1.0.0",
   "description": "Provide an unified interface for objects.",
   "keywords": ["map", "object", "array", "interface", "access"],
