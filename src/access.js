@@ -41,7 +41,9 @@ export default {
      * @return {T}
      */
     set(obj, key, value) {
-        return call(obj, 'set', key, value);
+        call(obj, 'set', key, value);
+
+        return obj;
     },
 
     /**

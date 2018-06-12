@@ -12,10 +12,9 @@ _access.default.register(Object, {
   },
   set: function set(obj, key, value) {
     obj[key] = value;
-    return obj;
   },
   has: function has(obj, key) {
-    return obj[key] !== undefined;
+    return key in obj;
   },
   delete: function _delete(obj, key) {
     return key in obj && delete obj[key];

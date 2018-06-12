@@ -6,8 +6,6 @@ access.register(Array, {
     },
     set(obj, key, value) {
         obj[key] = value;
-
-        return obj;
     },
     has(obj, key) {
         return key in obj;

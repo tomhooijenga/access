@@ -6,11 +6,9 @@ access.register(Object, {
     },
     set(obj, key, value) {
         obj[key] = value;
-
-        return obj;
     },
     has(obj, key) {
-        return obj[key] !== undefined;
+        return key in obj;
     },
     delete(obj, key) {
         return key in obj && delete obj[key];

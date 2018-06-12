@@ -10,7 +10,6 @@ _access.default.register(Array, {
   },
   set: function set(obj, key, value) {
     obj[key] = value;
-    return obj;
   },
   has: function has(obj, key) {
     return key in obj;

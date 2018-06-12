@@ -56,7 +56,8 @@ var _default = {
    * @return {T}
    */
   set: function set(obj, key, value) {
-    return call(obj, 'set', key, value);
+    call(obj, 'set', key, value);
+    return obj;
   },
 
   /**
