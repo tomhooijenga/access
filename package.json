@@ -1,6 +1,6 @@
 {
   "name": "@teamawesome/access",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Provide an unified interface for objects.",
   "keywords": ["map", "object", "array", "interface", "access"],
   "main": "dist/index.js",
