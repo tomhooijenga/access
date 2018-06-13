@@ -10,6 +10,7 @@
     "test": "mocha"
   },
   "author": "Tom Hooijenga <tomhooijenga@gmail.com>",
+  "homepage": "https://github.com/tomhooijenga/access",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
