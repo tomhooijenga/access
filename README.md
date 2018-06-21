@@ -1,6 +1,6 @@
 # Installation
 ```
-npm i @th/access
+npm i @teamawesome/access
 ```
 
 # Usage
@@ -23,6 +23,9 @@ Objects and Arrays are supported out of the box. To use your own type with acces
 Class Type {
     _getById(id) {
         //
+    },
+    del(id) {
+        //
     }
 }
 
@@ -30,18 +33,29 @@ access.register(Type, {
     get(obj, key) {
         return obj._getById(key);
     },
-    // etc
+    
+    // Alias methods in one line:
+    delete: (obj, key) => obj.del(key)
 });
 ```
-If a type implements one of the used methods, it is not necessary to also add it to the handler. It will be called 
-automatically for you. For example, Map and WeakMap are fully compatible without being registered.
+If a type implements one of the methods with the same signature, it is not necessary to add it to the handler. It 
+will be called automatically for you. For example, Map and WeakMap are fully compatible without being registered.
+A proxied method has precedence over auto-detected methods.
 
 ```
 Class Type {
     get(key) {
-        // Still called!
+        // Called automatically because it is detected.
+    },
+    
+    set(key, value) {
+        // Not called automatically because it is proxied.
     }
 }
 
-access.register(Type, {});
+access.register(Type, {
+    set(obj, value) {
+        //
+    }
+});
 ```
