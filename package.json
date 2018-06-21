@@ -1,13 +1,21 @@
 {
   "name": "@teamawesome/access",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provide an unified interface for objects.",
-  "keywords": ["map", "object", "array", "interface", "access"],
+  "keywords": [
+    "map",
+    "object",
+    "array",
+    "interface",
+    "access"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
     "dev": "babel src --out-dir dist --watch --source-maps inline",
-    "test": "mocha"
+    "lint": "eslint src/",
+    "test": "mocha",
+    "prepublishOnly": "npm run-script lint && npm run-script test && npm run-script build"
   },
   "author": "Tom Hooijenga <tomhooijenga@gmail.com>",
   "homepage": "https://github.com/tomhooijenga/access",
@@ -18,6 +26,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.49",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
+    "eslint": "^4.19.1",
     "mocha": "^5.1.1",
     "should": "^13.2.1",
     "should-sinon": "0.0.6",
