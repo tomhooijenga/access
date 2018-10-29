@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _keys = _interopRequireDefault(require("@babel/runtime/core-js/object/keys"));
-
 var _access = _interopRequireDefault(require("./access"));
 
 _access.default.register(Object, {
@@ -20,7 +18,7 @@ _access.default.register(Object, {
     return key in obj && delete obj[key];
   },
   clear: function clear(obj) {
-    (0, _keys.default)(obj).forEach(function (key) {
+    Object.keys(obj).forEach(function (key) {
       return delete obj[key];
     });
   }

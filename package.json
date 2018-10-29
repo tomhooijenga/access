@@ -1,6 +1,6 @@
 {
   "name": "@teamawesome/access",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Provide an unified interface for objects.",
   "keywords": [
     "map",
@@ -21,18 +21,18 @@
   "homepage": "https://github.com/tomhooijenga/access",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.49",
-    "@babel/core": "^7.0.0-beta.49",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.49",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.49",
-    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
     "eslint": "^4.19.1",
-    "mocha": "^5.1.1",
-    "should": "^13.2.1",
+    "mocha": "^5.2.0",
+    "should": "^13.2.3",
     "should-sinon": "0.0.6",
-    "sinon": "^6.0.0"
+    "sinon": "^6.3.5"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.49"
+    "@babel/runtime": "^7.1.2"
   }
 }

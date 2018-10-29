@@ -1,15 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _map = _interopRequireDefault(require("@babel/runtime/core-js/map"));
-
-var types = new _map.default();
+var types = new Map();
 /**
  * Get a proxy for the type of object
  * s
