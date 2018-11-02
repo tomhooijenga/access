@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _access = _interopRequireDefault(require("./access"));
 
-_access.default.register(Object, {
+var proxy = {
   get: function get(obj, key) {
     return obj[key];
   },
@@ -22,4 +22,9 @@ _access.default.register(Object, {
       return delete obj[key];
     });
   }
-});
+};
+
+_access.default.register(Object, proxy); // Objects created without a prototype do not have a constructor
+
+
+_access.default.register(undefined, proxy);

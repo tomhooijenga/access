@@ -1,6 +1,6 @@
 import access from "./access";
 
-access.register(Object, {
+const proxy = {
     get(obj, key) {
         return obj[key];
     },
@@ -18,4 +18,8 @@ access.register(Object, {
             .keys(obj)
             .forEach(key => delete obj[key]);
     }
-});
+};
+
+access.register(Object, proxy);
+// Objects created without a prototype do not have a constructor
+access.register(undefined, proxy);
