@@ -2,6 +2,7 @@ const should = require('should');
 const sinon = require('sinon');
 require('should-sinon');
 const access = require('../dist').default;
+const wrap = require('../dist/wrap').default;
 
 it('get', () => {
     const map = new Map([
@@ -192,4 +193,23 @@ it('mixed type', () => {
   should(access.clear(custom)).be.undefined();
   proxy.delete.should.be.calledOnce()
     .and.be.calledWith(custom);
+});
+
+it('wrapped', () => {
+  const obj = {
+    b: 1
+  };
+  const wrapped = wrap(obj);
+
+  wrapped.get('b').should.equal(1);
+
+  wrapped.set('c', 2).should.equal(wrapped);
+  wrapped.get('c').should.equal(2);
+  wrapped.has('c').should.equal(true);
+
+  wrapped.delete('c').should.equal(true);
+  wrapped.has('c').should.equal(false);
+
+  wrapped.clear();
+  wrapped.has('b').should.equal(false);
 });

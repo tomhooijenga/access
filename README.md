@@ -7,7 +7,7 @@ npm i @teamawesome/access
 The interface implements get, set, has, delete and clear.
 
 ```
-import access from '@th/access';
+import access from '@teamawesome/access';
 
 access.get(obj, key);
 access.set(obj, key, value);
@@ -15,9 +15,22 @@ access.has(obj, key);
 access.delete(obj, key);
 access.clear(obj, key);
 ```
+Alternatively, wrap an object to provide the interface. An added benefit for this is better performance. Note that if
+a proxy is neccesary for the object, it must be registered before wrapping.
+```
+import wrap from '@teamawesome/access/wrap'
+
+const wrapped = wrap(obj);
+
+wrapped.get(key);
+wrapped.set(key, value);
+wrapped.has(key);
+wrapped.delete(key);
+wrapped.clear();
+```
 
 # Custom types
-Objects and Arrays are supported out of the box. To use your own type with access, you must register a handler for it.
+Objects, Arrays and types that implement the Map interface (like Map and WeakMap) are supported out of the box. To use your own type with access, you must register a handler for it.
 
 ```
 Class Type {
