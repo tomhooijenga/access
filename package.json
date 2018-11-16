@@ -1,6 +1,6 @@
 {
   "name": "@teamawesome/access",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Provide an unified interface for objects.",
   "keywords": [
     "map",
@@ -15,6 +15,8 @@
     "dev": "babel src --out-dir dist --watch --source-maps inline",
     "lint": "eslint src/",
     "test": "mocha",
+    "benchmark:object": "node bench/object.js",
+    "benchmark:map": "node bench/map.js",
     "prepublishOnly": "npm run-script lint && npm run-script test && npm run-script build"
   },
   "author": "Tom Hooijenga <tomhooijenga@gmail.com>",
@@ -26,6 +28,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
+    "benchmark": "^2.1.4",
     "eslint": "^4.19.1",
     "mocha": "^5.2.0",
     "should": "^13.2.3",
