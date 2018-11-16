@@ -1,19 +1,20 @@
-const types = new Map();
+export const types = new Map();
 
 /**
- * Get a proxy for the type of object
- * s
+ * Call a method on the object's proxy or the object itself
+ *
  * @param {*} obj
  * @param {string} method
- * @param {...*} args
+ * @param {*} [key]
+ * @param {*} [value]
  */
-function call(obj, method, ...args) {
+function call(obj, method, key, value) {
     const proxy = types.get(obj.constructor);
 
-    if (proxy !== undefined) {
-        return proxy[method](obj, ...args)
+    if (proxy !== undefined && typeof proxy[method] === 'function') {
+        return proxy[method](obj, key, value)
     } else if (typeof obj[method] === 'function') {
-        return obj[method](...args);
+        return obj[method](key, value);
     }
 
     throw new TypeError(`No [${method}] handler for objects of type [${obj.constructor.name}]`);

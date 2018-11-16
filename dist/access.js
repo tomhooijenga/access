@@ -3,27 +3,26 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.types = void 0;
 var types = new Map();
 /**
- * Get a proxy for the type of object
- * s
+ * Call a method on the object's proxy or the object itself
+ *
  * @param {*} obj
  * @param {string} method
- * @param {...*} args
+ * @param {*} [key]
+ * @param {*} [value]
  */
 
-function call(obj, method) {
+exports.types = types;
+
+function call(obj, method, key, value) {
   var proxy = types.get(obj.constructor);
 
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  if (proxy !== undefined) {
-    return proxy[method].apply(proxy, [obj].concat(args));
+  if (proxy !== undefined && typeof proxy[method] === 'function') {
+    return proxy[method](obj, key, value);
   } else if (typeof obj[method] === 'function') {
-    return obj[method].apply(obj, args);
+    return obj[method](key, value);
   }
 
   throw new TypeError("No [".concat(method, "] handler for objects of type [").concat(obj.constructor.name, "]"));

@@ -149,11 +149,47 @@ it('implicit type', () => {
     access.has(custom, 'a').should.be.true();
     custom.has.should.be.calledOnce()
         .and.be.calledWith('a');
-    
+
     access.delete(custom, 'a').should.be.true();
     custom.delete.should.be.calledOnce()
         .and.be.calledWith('a');
 
     should(access.clear(custom)).be.undefined();
     custom.delete.should.be.calledOnce();
+});
+
+it('mixed type', () => {
+  function Custom() {}
+  Custom.prototype.get = sinon.stub().returns(1);
+
+  const custom = new Custom();
+
+  const proxy = {
+    set: sinon.stub().returns(custom),
+    has: sinon.stub().returns(true),
+    delete: sinon.stub().returns(true),
+    clear: sinon.stub().returns(undefined)
+  };
+
+  access.register(Custom, proxy);
+
+  access.get(custom, 'a').should.equal(1);
+  custom.get.should.be.calledOnce()
+  .and.be.calledWith('a');
+
+  access.set(custom, 'a', 1).should.equal(custom);
+  proxy.set.should.be.calledOnce()
+  .and.be.calledWith(custom, 'a', 1);
+
+  access.has(custom, 'a').should.be.true();
+  proxy.has.should.be.calledOnce()
+  .and.be.calledWith(custom, 'a');
+
+  access.delete(custom, 'a').should.be.true();
+  proxy.delete.should.be.calledOnce()
+  .and.be.calledWith(custom, 'a');
+
+  should(access.clear(custom)).be.undefined();
+  proxy.delete.should.be.calledOnce()
+    .and.be.calledWith(custom);
 });
