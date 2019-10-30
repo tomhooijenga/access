@@ -1,4 +1,7 @@
 module.exports = {
     "parser": "babel-eslint",
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "rules": {
+        "no-param-reassign": "off"
+    }
 };

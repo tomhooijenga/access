@@ -34,8 +34,9 @@ function get(obj, method) {
 
 
 function wrap(obj) {
-  var _set = get(obj, 'set'),
-      wrapped = {
+  var _set = get(obj, 'set');
+
+  var wrapped = {
     constructor: wrap,
     get: get(obj, 'get'),
     set: function set(key, value) {
@@ -47,6 +48,5 @@ function wrap(obj) {
     "delete": get(obj, 'delete'),
     clear: get(obj, 'clear')
   };
-
   return wrapped;
 }

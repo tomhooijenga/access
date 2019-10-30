@@ -24,20 +24,19 @@ function get(obj, method) {
  * @return {Object}
  */
 export default function wrap(obj) {
-  const
-    set = get(obj, 'set'),
-    wrapped = {
-      constructor: wrap,
-      get: get(obj, 'get'),
-      set(key, value) {
-        set(key, value);
+  const set = get(obj, 'set');
+  const wrapped = {
+    constructor: wrap,
+    get: get(obj, 'get'),
+    set(key, value) {
+      set(key, value);
 
-        return wrapped;
-      },
-      has: get(obj, 'has'),
-      delete: get(obj, 'delete'),
-      clear: get(obj, 'clear'),
-    };
+      return wrapped;
+    },
+    has: get(obj, 'has'),
+    delete: get(obj, 'delete'),
+    clear: get(obj, 'clear'),
+  };
 
   return wrapped;
 }
