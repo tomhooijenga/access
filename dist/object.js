@@ -14,7 +14,7 @@ var proxy = {
   has: function has(obj, key) {
     return key in obj;
   },
-  delete: function _delete(obj, key) {
+  "delete": function _delete(obj, key) {
     return key in obj && delete obj[key];
   },
   clear: function clear(obj) {
@@ -24,7 +24,7 @@ var proxy = {
   }
 };
 
-_access.default.register(Object, proxy); // Objects created without a prototype do not have a constructor
+_access["default"].register(Object, proxy); // Objects created without a prototype do not have a constructor
 
 
-_access.default.register(undefined, proxy);
+_access["default"].register(undefined, proxy);

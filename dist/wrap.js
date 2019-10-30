@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = wrap;
+exports["default"] = wrap;
 
 var _access = require("./access");
 
@@ -17,7 +17,9 @@ function get(obj, method) {
 
   if (proxy !== undefined && typeof proxy[method] === 'function') {
     return proxy[method].bind(null, obj);
-  } else if (typeof obj[method] === 'function') {
+  }
+
+  if (typeof obj[method] === 'function') {
     return obj[method].bind(obj);
   }
 
@@ -34,16 +36,16 @@ function get(obj, method) {
 function wrap(obj) {
   var _set = get(obj, 'set'),
       wrapped = {
-    "constructor": wrap,
-    "get": get(obj, 'get'),
+    constructor: wrap,
+    get: get(obj, 'get'),
     set: function set(key, value) {
       _set(key, value);
 
       return wrapped;
     },
-    "has": get(obj, 'has'),
+    has: get(obj, 'has'),
     "delete": get(obj, 'delete'),
-    "clear": get(obj, 'clear')
+    clear: get(obj, 'clear')
   };
 
   return wrapped;
