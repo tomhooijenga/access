@@ -32,74 +32,83 @@ function call(obj, method, key, value) {
 
 var _default = {
   /**
-     * Get a value by key
-     *
-     * @param obj
-     * @param key
-     * @return {*}
-     */
+   * Get a value by key
+   *
+   * @param obj
+   * @param key
+   * @return {*}
+   */
   get: function get(obj, key) {
     return call(obj, 'get', key);
   },
 
   /**
-     * Set the value of a key
-     *
-     * @template T
-     * @param {T} obj
-     * @param key
-     * @param value
-     * @return {T}
-     */
+   * Set the value of a key
+   *
+   * @template T
+   * @param {T} obj
+   * @param key
+   * @param value
+   * @return {T}
+   */
   set: function set(obj, key, value) {
     call(obj, 'set', key, value);
     return obj;
   },
 
   /**
-     * Does the object contain the key
-     * @param obj
-     * @param key
-     * @return {bool}
-     */
+   * Does the object contain the key
+   * @param obj
+   * @param key
+   * @return {bool}
+   */
   has: function has(obj, key) {
     return call(obj, 'has', key);
   },
 
   /**
-     * Delete the key
-     * @param obj
-     * @param key
-     * @return {bool}
-     */
+   * Delete the key
+   * @param obj
+   * @param key
+   * @return {bool}
+   */
   "delete": function _delete(obj, key) {
     return call(obj, 'delete', key);
   },
 
   /**
-     * Remove all entries
-     *
-     * @param obj
-     */
+   * Remove all entries
+   *
+   * @param obj
+   */
   clear: function clear(obj) {
     call(obj, 'clear');
   },
+  keys: function keys(obj) {
+    return call(obj, 'keys');
+  },
+  values: function values(obj) {
+    return call(obj, 'values');
+  },
+  entries: function entries(obj) {
+    return call(obj, 'entries');
+  },
 
   /**
-     * Register a type
-     *
-     * @param {*} type
-     * @param {{}} proxy
-     */
+   * Register a type
+   *
+   * @param {*} type
+   * @param {{}} proxy
+   */
   register: function register(type, proxy) {
     types.set(type, proxy);
   },
 
   /**
-     * Remove a type
-     *
-     * @param type
-     */
+   * Remove a type
+   *
+   * @param type
+   */
   unregister: function unregister(type) {
     types["delete"](type);
   }

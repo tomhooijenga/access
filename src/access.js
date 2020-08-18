@@ -22,25 +22,25 @@ function call(obj, method, key, value) {
 
 export default {
   /**
-     * Get a value by key
-     *
-     * @param obj
-     * @param key
-     * @return {*}
-     */
+   * Get a value by key
+   *
+   * @param obj
+   * @param key
+   * @return {*}
+   */
   get(obj, key) {
     return call(obj, 'get', key);
   },
 
   /**
-     * Set the value of a key
-     *
-     * @template T
-     * @param {T} obj
-     * @param key
-     * @param value
-     * @return {T}
-     */
+   * Set the value of a key
+   *
+   * @template T
+   * @param {T} obj
+   * @param key
+   * @param value
+   * @return {T}
+   */
   set(obj, key, value) {
     call(obj, 'set', key, value);
 
@@ -48,49 +48,61 @@ export default {
   },
 
   /**
-     * Does the object contain the key
-     * @param obj
-     * @param key
-     * @return {bool}
-     */
+   * Does the object contain the key
+   * @param obj
+   * @param key
+   * @return {bool}
+   */
   has(obj, key) {
     return call(obj, 'has', key);
   },
 
   /**
-     * Delete the key
-     * @param obj
-     * @param key
-     * @return {bool}
-     */
+   * Delete the key
+   * @param obj
+   * @param key
+   * @return {bool}
+   */
   delete(obj, key) {
     return call(obj, 'delete', key);
   },
 
   /**
-     * Remove all entries
-     *
-     * @param obj
-     */
+   * Remove all entries
+   *
+   * @param obj
+   */
   clear(obj) {
     call(obj, 'clear');
   },
 
+  keys(obj) {
+    return call(obj, 'keys');
+  },
+
+  values(obj) {
+    return call(obj, 'values');
+  },
+
+  entries(obj) {
+    return call(obj, 'entries');
+  },
+
   /**
-     * Register a type
-     *
-     * @param {*} type
-     * @param {{}} proxy
-     */
+   * Register a type
+   *
+   * @param {*} type
+   * @param {{}} proxy
+   */
   register(type, proxy) {
     types.set(type, proxy);
   },
 
   /**
-     * Remove a type
-     *
-     * @param type
-     */
+   * Remove a type
+   *
+   * @param type
+   */
   unregister(type) {
     types.delete(type);
   },

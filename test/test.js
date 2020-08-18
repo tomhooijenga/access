@@ -105,6 +105,41 @@ it('delete', () => {
   array.length.should.equal(1);
 });
 
+it('iterators', () => {
+  const map = new Map([
+    ['a', 1],
+    ['b', 2],
+  ]);
+  access.keys(map).should.be.iterator();
+  access.values(map).should.be.iterator();
+  access.entries(map).should.be.iterator();
+  [...access.keys(map)].should.eql(['a', 'b']);
+  [...access.values(map)].should.eql([1, 2]);
+  [...access.entries(map)].should.containDeep([['a', 1], ['b', 2]]);
+
+  const object = {
+    a: 1,
+    b: 2,
+  };
+  access.keys(object).should.be.iterator();
+  access.values(object).should.be.iterator();
+  access.entries(object).should.be.iterator();
+  [...access.keys(object)].should.eql(['a', 'b']);
+  [...access.values(object)].should.eql([1, 2]);
+  [...access.entries(object)].should.containDeep([['a', 1], ['b', 2]]);
+
+  const array = [
+    'a',
+    'b',
+  ];
+  access.keys(array).should.be.iterator();
+  access.values(array).should.be.iterator();
+  access.entries(array).should.be.iterator();
+  [...access.keys(array)].should.eql([0, 1]);
+  [...access.values(array)].should.eql(['a', 'b']);
+  [...access.entries(array)].should.containDeep([[0, 'a'], [1, 'b']]);
+});
+
 it('clear', () => {
   const map = new Map([
     ['a', 1],
@@ -201,6 +236,9 @@ it('wrapped', () => {
   };
   const wrapped = wrap(obj);
 
+  // Also symbol.iterator but should cannot display that.
+  wrapped.should.have.keys('get', 'set', 'has', 'delete', 'clear', 'keys', 'values', 'entries');
+
   wrapped.get('b').should.equal(1);
 
   wrapped.set('c', 2).should.equal(wrapped);
@@ -210,6 +248,13 @@ it('wrapped', () => {
   wrapped.delete('c').should.equal(true);
   wrapped.has('c').should.equal(false);
 
+  [...wrapped].should.deepEqual([['b', 1]]);
+
   wrapped.clear();
   wrapped.has('b').should.equal(false);
+
+  wrapped.keys().should.be.iterator();
+  wrapped.values().should.be.iterator();
+  wrapped.entries().should.be.iterator();
+  wrapped.should.be.iterable();
 });

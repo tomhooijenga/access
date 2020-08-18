@@ -16,7 +16,19 @@ const proxy = {
   clear(obj) {
     Object
       .keys(obj)
-      .forEach(key => delete obj[key]);
+      .forEach((key) => delete obj[key]);
+  },
+  keys(obj) {
+    return Object.keys(obj).values();
+  },
+  values(obj) {
+    return Object.values(obj).values();
+  },
+  entries(obj) {
+    return Object.entries(obj).values();
+  },
+  [Symbol.iterator](obj) {
+    return Object.entries(obj).values();
   },
 };
 

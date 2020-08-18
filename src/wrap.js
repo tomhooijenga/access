@@ -2,7 +2,7 @@ import { types } from './access';
 
 /**
  * @param {*} obj
- * @param {string} method
+ * @param {string|Symbol} method
  * @return {*}
  */
 function get(obj, method) {
@@ -14,7 +14,7 @@ function get(obj, method) {
     return obj[method].bind(obj);
   }
 
-  throw new TypeError(`No [${method}] handler for objects of type [${obj.constructor.name}]`);
+  throw new TypeError(`No [${method.toString()}] handler for objects of type [${obj.constructor.name}]`);
 }
 
 /**
@@ -36,6 +36,10 @@ export default function wrap(obj) {
     has: get(obj, 'has'),
     delete: get(obj, 'delete'),
     clear: get(obj, 'clear'),
+    keys: get(obj, 'keys'),
+    values: get(obj, 'values'),
+    entries: get(obj, 'entries'),
+    [Symbol.iterator]: get(obj, Symbol.iterator),
   };
 
   return wrapped;

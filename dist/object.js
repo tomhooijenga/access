@@ -2,9 +2,11 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _access = _interopRequireDefault(require("./access"));
 
-var proxy = {
+var proxy = (0, _defineProperty2["default"])({
   get: function get(obj, key) {
     return obj[key];
   },
@@ -21,8 +23,19 @@ var proxy = {
     Object.keys(obj).forEach(function (key) {
       return delete obj[key];
     });
+  },
+  keys: function keys(obj) {
+    return Object.keys(obj).values();
+  },
+  values: function values(obj) {
+    return Object.values(obj).values();
+  },
+  entries: function entries(obj) {
+    return Object.entries(obj).values();
   }
-};
+}, Symbol.iterator, function (obj) {
+  return Object.entries(obj).values();
+});
 
 _access["default"].register(Object, proxy); // Objects created without a prototype do not have a constructor
 
