@@ -58,6 +58,7 @@ var _default = {
 
   /**
    * Does the object contain the key
+   *
    * @param obj
    * @param key
    * @return {bool}
@@ -68,6 +69,7 @@ var _default = {
 
   /**
    * Delete the key
+   *
    * @param obj
    * @param key
    * @return {bool}
@@ -84,12 +86,33 @@ var _default = {
   clear: function clear(obj) {
     call(obj, 'clear');
   },
+
+  /**
+   * Get the keys of the object
+   *
+   * @param obj
+   * @return {IterableIterator}
+   */
   keys: function keys(obj) {
     return call(obj, 'keys');
   },
+
+  /**
+   * Get the values of the object
+   *
+   * @param obj
+   * @return {IterableIterator}
+   */
   values: function values(obj) {
     return call(obj, 'values');
   },
+
+  /**
+   * Get the entries of the object
+   *
+   * @param obj
+   * @return {IterableIterator}
+   */
   entries: function entries(obj) {
     return call(obj, 'entries');
   },

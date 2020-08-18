@@ -13,7 +13,9 @@ function call(obj, method, key, value) {
 
   if (proxy !== undefined && typeof proxy[method] === 'function') {
     return proxy[method](obj, key, value);
-  } if (typeof obj[method] === 'function') {
+  }
+
+  if (typeof obj[method] === 'function') {
     return obj[method](key, value);
   }
 

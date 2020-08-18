@@ -29,7 +29,7 @@ suite
   })
   .on('complete', () => {
     results.forEach((result) => {
-      console.log(`${result.target.name}\t\t\t${result.target.hz.toLocaleString('en-US', { maximumFractionDigits: 0 })}`);
+      console.log(`${result.target.name.padEnd(15, ' ')}${result.target.hz.toLocaleString('en-US', { maximumFractionDigits: 0 })}`);
     });
   })
   .on('error', (e) => {
