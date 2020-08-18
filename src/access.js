@@ -49,6 +49,7 @@ export default {
 
   /**
    * Does the object contain the key
+   *
    * @param obj
    * @param key
    * @return {bool}
@@ -59,6 +60,7 @@ export default {
 
   /**
    * Delete the key
+   *
    * @param obj
    * @param key
    * @return {bool}
@@ -76,14 +78,32 @@ export default {
     call(obj, 'clear');
   },
 
+  /**
+   * Get the keys of the object
+   *
+   * @param obj
+   * @return {IterableIterator}
+   */
   keys(obj) {
     return call(obj, 'keys');
   },
 
+  /**
+   * Get the values of the object
+   *
+   * @param obj
+   * @return {IterableIterator}
+   */
   values(obj) {
     return call(obj, 'values');
   },
 
+  /**
+   * Get the entries of the object
+   *
+   * @param obj
+   * @return {IterableIterator}
+   */
   entries(obj) {
     return call(obj, 'entries');
   },
