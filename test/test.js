@@ -1,7 +1,7 @@
 const should = require('should');
 const sinon = require('sinon');
 require('should-sinon');
-const access = require('../dist').default;
+const { default: access, types } = require('../dist');
 const wrap = require('../dist/wrap').default;
 
 it('get', () => {
@@ -192,6 +192,17 @@ it('implicit type', () => {
 
   should(access.clear(custom)).be.undefined();
   custom.delete.should.be.calledOnce();
+});
+
+it('register & unregister', () => {
+  function Custom() {}
+  const proxy = {};
+
+  access.register(Custom, proxy);
+  types.should.have.value(Custom, proxy);
+
+  access.unregister(Custom);
+  types.should.not.have.value(Custom, proxy);
 });
 
 it('mixed type', () => {
