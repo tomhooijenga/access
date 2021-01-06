@@ -1,4 +1,5 @@
 import './array';
 import './object';
+import './storage';
 
-export { default } from './access';
+export { default, types } from './access';
