@@ -164,13 +164,15 @@ it('clear', () => {
 });
 
 it('implicit type', () => {
-  const custom = {
-    constructor() {},
-    get: sinon.stub().returns(1),
-    has: sinon.stub().returns(true),
-    delete: sinon.stub().returns(true),
-    clear: sinon.stub().returns(undefined),
-  };
+  const custom = new class {
+    get = sinon.stub().returns(1);
+
+    has = sinon.stub().returns(true);
+
+    delete = sinon.stub().returns(true);
+
+    clear = sinon.stub().returns(undefined);
+  }();
 
   custom.set = sinon.stub().returns(custom);
 
@@ -195,7 +197,7 @@ it('implicit type', () => {
 });
 
 it('register & unregister', () => {
-  function Custom() {}
+  class Custom { }
   const proxy = {};
 
   access.register(Custom, proxy);
@@ -206,12 +208,14 @@ it('register & unregister', () => {
 });
 
 it('mixed type', () => {
-  function Custom() {}
-  Custom.prototype.get = sinon.stub().returns(1);
+  class Custom {
+    get = sinon.stub().returns(1)
+  }
 
   const custom = new Custom();
 
   const proxy = {
+    // No getter in proxy.
     set: sinon.stub().returns(custom),
     has: sinon.stub().returns(true),
     delete: sinon.stub().returns(true),
@@ -268,4 +272,23 @@ it('wrapped', () => {
   wrapped.values().should.be.iterator();
   wrapped.entries().should.be.iterator();
   wrapped.should.be.iterable();
+});
+
+it('proxy precedence', () => {
+  class Custom {
+    get = sinon.stub().returns(1)
+  }
+
+  const custom = new Custom();
+
+  const proxy = {
+    get: sinon.stub().returns(1),
+  };
+
+  access.register(Custom, proxy);
+  access.get(custom, 'a');
+
+  custom.get.should.not.be.called();
+  proxy.get.should.be.calledOnce()
+    .and.be.calledWith(custom, 'a');
 });
