@@ -10,7 +10,9 @@ function get(obj, method) {
 
   if (proxy !== undefined && typeof proxy[method] === 'function') {
     return proxy[method].bind(null, obj);
-  } if (typeof obj[method] === 'function') {
+  }
+
+  if (typeof obj[method] === 'function') {
     return obj[method].bind(obj);
   }
 
