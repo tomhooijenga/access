@@ -1,26 +1,5 @@
-export const types = new Map();
-
-/**
- * Call a method on the object's proxy or the object itself
- *
- * @param {*} obj
- * @param {string} method
- * @param {*} [key]
- * @param {*} [value]
- */
-function call(obj, method, key, value) {
-  const proxy = types.get(obj.constructor);
-
-  if (proxy !== undefined && typeof proxy[method] === 'function') {
-    return proxy[method](obj, key, value);
-  }
-
-  if (typeof obj[method] === 'function') {
-    return obj[method](key, value);
-  }
-
-  throw new TypeError(`No [${method}] handler for objects of type [${obj.constructor.name}]`);
-}
+import { call0, call1, call2 } from './call';
+import types from './types';
 
 export default {
   /**
@@ -31,7 +10,7 @@ export default {
    * @return {*}
    */
   get(obj, key) {
-    return call(obj, 'get', key);
+    return call1(obj, 'get', key);
   },
 
   /**
@@ -44,7 +23,7 @@ export default {
    * @return {T}
    */
   set(obj, key, value) {
-    call(obj, 'set', key, value);
+    call2(obj, 'set', key, value);
 
     return obj;
   },
@@ -57,7 +36,7 @@ export default {
    * @return {bool}
    */
   has(obj, key) {
-    return call(obj, 'has', key);
+    return call1(obj, 'has', key);
   },
 
   /**
@@ -68,7 +47,7 @@ export default {
    * @return {bool}
    */
   delete(obj, key) {
-    return call(obj, 'delete', key);
+    return call1(obj, 'delete', key);
   },
 
   /**
@@ -77,7 +56,7 @@ export default {
    * @param obj
    */
   clear(obj) {
-    call(obj, 'clear');
+    call0(obj, 'clear');
   },
 
   /**
@@ -87,7 +66,7 @@ export default {
    * @return {IterableIterator}
    */
   keys(obj) {
-    return call(obj, 'keys');
+    return call0(obj, 'keys');
   },
 
   /**
@@ -97,7 +76,7 @@ export default {
    * @return {IterableIterator}
    */
   values(obj) {
-    return call(obj, 'values');
+    return call0(obj, 'values');
   },
 
   /**
@@ -107,7 +86,7 @@ export default {
    * @return {IterableIterator}
    */
   entries(obj) {
-    return call(obj, 'entries');
+    return call0(obj, 'entries');
   },
 
   /**

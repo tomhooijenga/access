@@ -34,4 +34,4 @@ const proxy = {
 
 access.register(Object, proxy);
 // Objects created without a prototype do not have a constructor
-access.register(undefined, proxy);
+// access.register(undefined, proxy);

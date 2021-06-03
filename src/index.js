@@ -2,4 +2,5 @@ import './array';
 import './object';
 import './storage';
 
-export { default, types } from './access';
+export { default } from './access';
+export { default as types } from './types';

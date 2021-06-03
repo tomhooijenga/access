@@ -1,4 +1,4 @@
-import { types } from './access';
+import types from './types'
 
 /**
  * @param {*} obj
