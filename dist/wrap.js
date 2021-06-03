@@ -1,15 +1,15 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault")["default"];
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = wrap;
+exports.default = wrap;
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _access = require("./access");
+var _types = _interopRequireDefault(require("./types"));
 
 /**
  * @param {*} obj
@@ -17,7 +17,7 @@ var _access = require("./access");
  * @return {*}
  */
 function get(obj, method) {
-  var proxy = _access.types.get(obj.constructor);
+  var proxy = _types.default.get(obj.constructor);
 
   if (proxy !== undefined && typeof proxy[method] === 'function') {
     return proxy[method].bind(null, obj);
@@ -40,7 +40,7 @@ function get(obj, method) {
 function wrap(obj) {
   var _set = get(obj, 'set');
 
-  var wrapped = (0, _defineProperty2["default"])({
+  var wrapped = (0, _defineProperty2.default)({
     constructor: wrap,
     get: get(obj, 'get'),
     set: function set(key, value) {
@@ -49,7 +49,7 @@ function wrap(obj) {
       return wrapped;
     },
     has: get(obj, 'has'),
-    "delete": get(obj, 'delete'),
+    delete: get(obj, 'delete'),
     clear: get(obj, 'clear'),
     keys: get(obj, 'keys'),
     values: get(obj, 'values'),

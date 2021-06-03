@@ -1,6 +1,6 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard")["default"];
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -8,13 +8,19 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
-    return _access["default"];
+    return _access.default;
+  }
+});
+Object.defineProperty(exports, "access", {
+  enumerable: true,
+  get: function get() {
+    return _access.default;
   }
 });
 Object.defineProperty(exports, "types", {
   enumerable: true,
   get: function get() {
-    return _access.types;
+    return _types.default;
   }
 });
 
@@ -24,4 +30,6 @@ require("./object");
 
 require("./storage");
 
-var _access = _interopRequireWildcard(require("./access"));
+var _access = _interopRequireDefault(require("./access"));
+
+var _types = _interopRequireDefault(require("./types"));

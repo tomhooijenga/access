@@ -1,12 +1,12 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault")["default"];
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _access = _interopRequireDefault(require("./access"));
 
-var proxy = (0, _defineProperty2["default"])({
+var proxy = (0, _defineProperty2.default)({
   get: function get(obj, key) {
     return obj[key];
   },
@@ -16,7 +16,7 @@ var proxy = (0, _defineProperty2["default"])({
   has: function has(obj, key) {
     return key in obj;
   },
-  "delete": function _delete(obj, key) {
+  delete: function _delete(obj, key) {
     return key in obj && delete obj[key];
   },
   clear: function clear(obj) {
@@ -37,7 +37,5 @@ var proxy = (0, _defineProperty2["default"])({
   return Object.entries(obj).values();
 });
 
-_access["default"].register(Object, proxy); // Objects created without a prototype do not have a constructor
-
-
-_access["default"].register(undefined, proxy);
+_access.default.register(Object, proxy); // Objects created without a prototype do not have a constructor
+// access.register(undefined, proxy);

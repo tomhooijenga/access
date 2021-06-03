@@ -1,34 +1,15 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.types = void 0;
-var types = new Map();
-/**
- * Call a method on the object's proxy or the object itself
- *
- * @param {*} obj
- * @param {string} method
- * @param {*} [key]
- * @param {*} [value]
- */
+exports.default = void 0;
 
-exports.types = types;
+var _call = require("./call");
 
-function call(obj, method, key, value) {
-  var proxy = types.get(obj.constructor);
-
-  if (proxy !== undefined && typeof proxy[method] === 'function') {
-    return proxy[method](obj, key, value);
-  }
-
-  if (typeof obj[method] === 'function') {
-    return obj[method](key, value);
-  }
-
-  throw new TypeError("No [".concat(method, "] handler for objects of type [").concat(obj.constructor.name, "]"));
-}
+var _types = _interopRequireDefault(require("./types"));
 
 var _default = {
   /**
@@ -39,7 +20,7 @@ var _default = {
    * @return {*}
    */
   get: function get(obj, key) {
-    return call(obj, 'get', key);
+    return (0, _call.call1)(obj, 'get', key);
   },
 
   /**
@@ -52,7 +33,7 @@ var _default = {
    * @return {T}
    */
   set: function set(obj, key, value) {
-    call(obj, 'set', key, value);
+    (0, _call.call2)(obj, 'set', key, value);
     return obj;
   },
 
@@ -64,7 +45,7 @@ var _default = {
    * @return {bool}
    */
   has: function has(obj, key) {
-    return call(obj, 'has', key);
+    return (0, _call.call1)(obj, 'has', key);
   },
 
   /**
@@ -74,8 +55,8 @@ var _default = {
    * @param key
    * @return {bool}
    */
-  "delete": function _delete(obj, key) {
-    return call(obj, 'delete', key);
+  delete: function _delete(obj, key) {
+    return (0, _call.call1)(obj, 'delete', key);
   },
 
   /**
@@ -84,7 +65,7 @@ var _default = {
    * @param obj
    */
   clear: function clear(obj) {
-    call(obj, 'clear');
+    (0, _call.call0)(obj, 'clear');
   },
 
   /**
@@ -94,7 +75,7 @@ var _default = {
    * @return {IterableIterator}
    */
   keys: function keys(obj) {
-    return call(obj, 'keys');
+    return (0, _call.call0)(obj, 'keys');
   },
 
   /**
@@ -104,7 +85,7 @@ var _default = {
    * @return {IterableIterator}
    */
   values: function values(obj) {
-    return call(obj, 'values');
+    return (0, _call.call0)(obj, 'values');
   },
 
   /**
@@ -114,7 +95,7 @@ var _default = {
    * @return {IterableIterator}
    */
   entries: function entries(obj) {
-    return call(obj, 'entries');
+    return (0, _call.call0)(obj, 'entries');
   },
 
   /**
@@ -124,7 +105,7 @@ var _default = {
    * @param {{}} proxy
    */
   register: function register(type, proxy) {
-    types.set(type, proxy);
+    _types.default.set(type, proxy);
   },
 
   /**
@@ -133,7 +114,7 @@ var _default = {
    * @param type
    */
   unregister: function unregister(type) {
-    types["delete"](type);
+    _types.default.delete(type);
   }
 };
-exports["default"] = _default;
+exports.default = _default;

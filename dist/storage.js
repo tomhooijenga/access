@@ -1,12 +1,12 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault")["default"];
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _access = _interopRequireDefault(require("./access"));
 
-var proxy = (0, _defineProperty2["default"])({
+var proxy = (0, _defineProperty2.default)({
   get: function get(obj, key) {
     return obj.getItem(key);
   },
@@ -16,7 +16,7 @@ var proxy = (0, _defineProperty2["default"])({
   has: function has(obj, key) {
     return obj.getItem(key) !== null;
   },
-  "delete": function _delete(obj, key) {
+  delete: function _delete(obj, key) {
     return obj.getItem(key) === null && obj.removeItem(key) === undefined;
   },
   clear: function clear(obj) {
@@ -37,6 +37,6 @@ var proxy = (0, _defineProperty2["default"])({
 /* eslint-disable no-undef */
 
 if (typeof window !== 'undefined' && typeof window.Storage !== 'undefined') {
-  _access["default"].register(window.Storage, proxy);
+  _access.default.register(window.Storage, proxy);
 }
 /* eslint-enable no-undef */
