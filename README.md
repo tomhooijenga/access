@@ -24,7 +24,7 @@ access.entries(obj);
 Alternatively, wrap an object to provide the interface. An added benefit for this is better performance. Note that if
 a handler is necessary for the object, it must be registered before wrapping.
 ```
-import wrap from '@teamawesome/access/wrap'
+import { wrap } from '@teamawesome/access'
 
 const wrapped = wrap(obj);
 

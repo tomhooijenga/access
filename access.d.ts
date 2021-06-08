@@ -17,3 +17,5 @@ export type Handler = {
 }
 
 export const types: Map<Function | undefined, Partial<Handler>>;
+
+export function wrap(obj: any): Handler;

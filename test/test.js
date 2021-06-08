@@ -1,8 +1,7 @@
 const should = require('should');
 const sinon = require('sinon');
 require('should-sinon');
-const { default: access, types } = require('../dist');
-const wrap = require('../dist/wrap').default;
+const { access, wrap, types } = require('../dist');
 
 it('get', () => {
   const map = new Map([

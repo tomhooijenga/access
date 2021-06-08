@@ -2,8 +2,8 @@ import types from './types'
 
 /**
  * @param {*} obj
- * @param {string|Symbol} method
- * @return {*}
+ * @param {string|symbol} method
+ * @return {function}
  */
 function get(obj, method) {
   const proxy = types.get(obj.constructor);
