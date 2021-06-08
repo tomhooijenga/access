@@ -38,4 +38,6 @@ var proxy = (0, _defineProperty2.default)({
 });
 
 _access.default.register(Object, proxy); // Objects created without a prototype do not have a constructor
-// access.register(undefined, proxy);
+
+
+_access.default.register(undefined, proxy);
