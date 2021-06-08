@@ -1,12 +1,10 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": "defaults"
-      }
-    ]
-  ],
+  "targets": "defaults",
+  "assumptions": {
+    "noDocumentAll": true,
+    "constantReexports": true
+  },
+  "presets": ["@babel/preset-env"],
   "plugins": [
     [
       "@babel/plugin-transform-runtime",
