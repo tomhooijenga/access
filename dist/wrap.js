@@ -13,8 +13,8 @@ var _types = _interopRequireDefault(require("./types"));
 
 /**
  * @param {*} obj
- * @param {string|Symbol} method
- * @return {*}
+ * @param {string|symbol} method
+ * @return {function}
  */
 function get(obj, method) {
   var proxy = _types.default.get(obj.constructor);

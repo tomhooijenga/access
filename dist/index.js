@@ -5,24 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function get() {
-    return _access.default;
-  }
-});
-Object.defineProperty(exports, "access", {
-  enumerable: true,
-  get: function get() {
-    return _access.default;
-  }
-});
-Object.defineProperty(exports, "types", {
-  enumerable: true,
-  get: function get() {
-    return _types.default;
-  }
-});
+exports.types = exports.wrap = exports.access = exports.default = void 0;
 
 require("./array");
 
@@ -32,4 +15,13 @@ require("./storage");
 
 var _access = _interopRequireDefault(require("./access"));
 
+exports.default = _access.default;
+exports.access = _access.default;
+
+var _wrap = _interopRequireDefault(require("./wrap"));
+
+exports.wrap = _wrap.default;
+
 var _types = _interopRequireDefault(require("./types"));
+
+exports.types = _types.default;
