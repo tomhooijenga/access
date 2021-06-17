@@ -162,6 +162,26 @@ it('clear', () => {
   array.length.should.equal(0);
 });
 
+it('size', () => {
+  const map = new Map([
+    ['a', 1],
+    ['b', 2],
+  ]);
+  access.size(map).should.equal(map.size);
+
+  const object = {
+    a: 1,
+    b: 2,
+  };
+  access.size(object).should.equal(Object.keys(object).length);
+
+  const array = [
+    'a',
+    'b',
+  ];
+  access.size(array).should.equal(array.length);
+})
+
 it('implicit type', () => {
   const custom = new class {
     get = sinon.stub().returns(1);
@@ -251,7 +271,7 @@ it('wrapped', () => {
   const wrapped = wrap(obj);
 
   // Also symbol.iterator but should cannot display that.
-  wrapped.should.have.keys('get', 'set', 'has', 'delete', 'clear', 'keys', 'values', 'entries');
+  wrapped.should.have.keys('get', 'set', 'has', 'delete', 'clear', 'size', 'keys', 'values', 'entries');
 
   wrapped.get('b').should.equal(1);
 

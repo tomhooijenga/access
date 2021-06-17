@@ -13,7 +13,7 @@ export function call0(obj, method) {
     return proxy[method](obj);
   }
 
-  if (obj[method]) {
+  if (typeof obj[method] === 'function') {
     return obj[method]();
   }
 
@@ -61,4 +61,25 @@ export function call2(obj, method, key, value) {
   }
 
   throw new TypeError(`No [${method}] handler for objects of type [${obj.constructor.name}]`);
+}
+
+/**
+ * Call a method on the object's proxy or read the property from the object itself
+ *
+ * @param obj
+ * @param property
+ * @returns {*}
+ */
+export function read(obj, property) {
+  const proxy = types.get(obj.constructor);
+
+  if (proxy !== undefined && typeof proxy[property] === 'function') {
+    return proxy[property]();
+  }
+
+  if (property in obj) {
+    return obj[property];
+  }
+
+  throw new TypeError(`No [${property}] handler for objects of type [${obj.constructor.name}]`);
 }

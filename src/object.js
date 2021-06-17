@@ -18,6 +18,9 @@ const proxy = {
       .keys(obj)
       .forEach((key) => delete obj[key]);
   },
+  size(obj) {
+    return Object.keys(obj).length;
+  },
   keys(obj) {
     return Object.keys(obj).values();
   },

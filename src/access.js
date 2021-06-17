@@ -1,4 +1,4 @@
-import { call0, call1, call2 } from './call';
+import {call0, call1, call2, read} from './call';
 import types from './types';
 
 export default {
@@ -57,6 +57,16 @@ export default {
    */
   clear(obj) {
     call0(obj, 'clear');
+  },
+
+  /**
+   * Get the amount of properties
+   *
+   * @param obj
+   * @returns {number}
+   */
+  size(obj) {
+    return read(obj, 'size');
   },
 
   /**

@@ -16,6 +16,9 @@ const proxy = {
   clear(obj) {
     obj.clear();
   },
+  size(obj) {
+    return obj.length;
+  },
   keys(obj) {
     return Object.keys(obj).values();
   },

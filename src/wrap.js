@@ -1,4 +1,4 @@
-import types from './types'
+import types from './types';
 
 /**
  * @param {*} obj
@@ -16,6 +16,10 @@ function get(obj, method) {
     return obj[method].bind(obj);
   }
 
+  if (method in obj) {
+    return () => obj[method];
+  }
+
   throw new TypeError(`No [${method.toString()}] handler for objects of type [${obj.constructor.name}]`);
 }
 
@@ -27,6 +31,8 @@ function get(obj, method) {
  */
 export default function wrap(obj) {
   const set = get(obj, 'set');
+  const size = get(obj, 'size');
+
   const wrapped = {
     constructor: wrap,
     get: get(obj, 'get'),
@@ -38,6 +44,9 @@ export default function wrap(obj) {
     has: get(obj, 'has'),
     delete: get(obj, 'delete'),
     clear: get(obj, 'clear'),
+    get size() {
+      return size();
+    },
     keys: get(obj, 'keys'),
     values: get(obj, 'values'),
     entries: get(obj, 'entries'),
