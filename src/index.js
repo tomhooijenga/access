@@ -1,6 +1,6 @@
-import './array';
-import './object';
-import './storage';
+import './handlers/array';
+import './handlers/object';
+import './handlers/storage';
 
 export { default, default as access } from './access';
 export { default as wrap } from './wrap';

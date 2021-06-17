@@ -1,4 +1,4 @@
-import access from './access';
+import access from '../access';
 
 access.register(Array, {
   get(obj, key) {
