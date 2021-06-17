@@ -27,6 +27,12 @@ function get(obj, method) {
     return obj[method].bind(obj);
   }
 
+  if (method in obj) {
+    return function () {
+      return obj[method];
+    };
+  }
+
   throw new TypeError("No [".concat(method.toString(), "] handler for objects of type [").concat(obj.constructor.name, "]"));
 }
 /**
@@ -40,6 +46,7 @@ function get(obj, method) {
 function wrap(obj) {
   var _set = get(obj, 'set');
 
+  var size = get(obj, 'size');
   var wrapped = (0, _defineProperty2.default)({
     constructor: wrap,
     get: get(obj, 'get'),
@@ -51,6 +58,11 @@ function wrap(obj) {
     has: get(obj, 'has'),
     delete: get(obj, 'delete'),
     clear: get(obj, 'clear'),
+
+    get size() {
+      return size();
+    },
+
     keys: get(obj, 'keys'),
     values: get(obj, 'values'),
     entries: get(obj, 'entries')

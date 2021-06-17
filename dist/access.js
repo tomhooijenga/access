@@ -69,6 +69,16 @@ var _default = {
   },
 
   /**
+   * Get the amount of properties
+   *
+   * @param obj
+   * @returns {number}
+   */
+  size: function size(obj) {
+    return (0, _call.read)(obj, 'size');
+  },
+
+  /**
    * Get the keys of the object
    *
    * @param obj

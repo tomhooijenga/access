@@ -7,11 +7,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.types = exports.wrap = exports.access = exports.default = void 0;
 
-require("./array");
+require("./handlers/array");
 
-require("./object");
+require("./handlers/object");
 
-require("./storage");
+require("./handlers/storage");
 
 var _access = _interopRequireDefault(require("./access"));
 

@@ -8,6 +8,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.call0 = call0;
 exports.call1 = call1;
 exports.call2 = call2;
+exports.read = read;
 
 var _types = _interopRequireDefault(require("./types"));
 
@@ -24,7 +25,7 @@ function call0(obj, method) {
     return proxy[method](obj);
   }
 
-  if (obj[method]) {
+  if (typeof obj[method] === 'function') {
     return obj[method]();
   }
 
@@ -74,4 +75,26 @@ function call2(obj, method, key, value) {
   }
 
   throw new TypeError("No [".concat(method, "] handler for objects of type [").concat(obj.constructor.name, "]"));
+}
+/**
+ * Call a method on the object's proxy or read the property from the object itself
+ *
+ * @param obj
+ * @param property
+ * @returns {*}
+ */
+
+
+function read(obj, property) {
+  var proxy = _types.default.get(obj.constructor);
+
+  if (proxy !== undefined && typeof proxy[property] === 'function') {
+    return proxy[property](obj);
+  }
+
+  if (property in obj) {
+    return obj[property];
+  }
+
+  throw new TypeError("No [".concat(property, "] handler for objects of type [").concat(obj.constructor.name, "]"));
 }

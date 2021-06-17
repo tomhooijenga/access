@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 
-var _access = _interopRequireDefault(require("./access"));
+var _access = _interopRequireDefault(require("../access"));
 
 _access.default.register(Array, {
   get: function get(obj, key) {
@@ -19,5 +19,8 @@ _access.default.register(Array, {
   },
   clear: function clear(obj) {
     obj.length = 0;
+  },
+  size: function size(obj) {
+    return obj.length;
   }
 });

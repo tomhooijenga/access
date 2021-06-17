@@ -4,23 +4,28 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _access = _interopRequireDefault(require("./access"));
+var _access = _interopRequireDefault(require("../access"));
 
 var proxy = (0, _defineProperty2.default)({
   get: function get(obj, key) {
-    return obj.getItem(key);
+    return obj[key];
   },
   set: function set(obj, key, value) {
-    return obj.setItem(key, value);
+    obj[key] = value;
   },
   has: function has(obj, key) {
-    return obj.getItem(key) !== null;
+    return key in obj;
   },
   delete: function _delete(obj, key) {
-    return obj.getItem(key) === null && obj.removeItem(key) === undefined;
+    return key in obj && delete obj[key];
   },
   clear: function clear(obj) {
-    obj.clear();
+    Object.keys(obj).forEach(function (key) {
+      return delete obj[key];
+    });
+  },
+  size: function size(obj) {
+    return Object.keys(obj).length;
   },
   keys: function keys(obj) {
     return Object.keys(obj).values();
@@ -34,9 +39,8 @@ var proxy = (0, _defineProperty2.default)({
 }, Symbol.iterator, function (obj) {
   return Object.entries(obj).values();
 });
-/* eslint-disable no-undef */
 
-if (typeof window !== 'undefined' && typeof window.Storage !== 'undefined') {
-  _access.default.register(window.Storage, proxy);
-}
-/* eslint-enable no-undef */
+_access.default.register(Object, proxy); // Objects created without a prototype do not have a constructor
+
+
+_access.default.register(undefined, proxy);
