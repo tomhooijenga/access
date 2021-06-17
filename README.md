@@ -7,7 +7,7 @@ npm i @teamawesome/access
 ```
 
 # Usage
-The interface implements get, set, has, delete, clear, keys, values and entries.
+The interface implements get, set, has, delete, clear, keys, values, entries and size.
 
 ```
 import access from '@teamawesome/access';
@@ -20,6 +20,7 @@ access.clear(obj, key);
 access.keys(obj);
 access.values(obj);
 access.entries(obj);
+access.size(obj);
 ```
 Alternatively, wrap an object to provide the interface. An added benefit for this is better performance. Note that if
 a handler is necessary for the object, it must be registered before wrapping.
@@ -37,6 +38,7 @@ wrapped.keys();
 wrapped.values();
 wrapped.entries();
 wrapped[Symbol.iterator]();
+wrapped.size;
 ```
 
 # Pre-registered types
