@@ -14,7 +14,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "dev": "babel src --out-dir dist --watch --source-maps inline",
-    "lint": "eslint src/",
+    "lint": "eslint src/ --fix",
     "test": "mocha",
     "benchmark:object": "node bench/object.js",
     "benchmark:map": "node bench/map.js",
