@@ -74,7 +74,7 @@ export function read(obj, property) {
   const proxy = types.get(obj.constructor);
 
   if (proxy !== undefined && typeof proxy[property] === 'function') {
-    return proxy[property]();
+    return proxy[property](obj);
   }
 
   if (property in obj) {
