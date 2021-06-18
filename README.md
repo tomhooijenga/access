@@ -1,5 +1,14 @@
 # Access
-Access provides a unified interface for all sorts of objects.
+Access provides a unified interface for all sorts of objects. Supported types are:
+
+* Object
+* Array
+* Storage (localStorage, sessionStorage)
+* Map
+* WeakMap
+* __Any object with the map interface__
+
+Alternatively, you could write your own handler to add support for a custom type.
 
 # Installation
 ```
@@ -41,13 +50,6 @@ wrapped[Symbol.iterator]();
 wrapped.size;
 ```
 
-# Pre-registered types
-* Object
-* Array
-* Storage (localStorage, sessionStorage)
-* Map
-* WeakMap
-
 # Custom types
 Objects that implement the Map interface are supported out of the box. To use your own type with access, you must
 register a handler for it.
@@ -77,7 +79,7 @@ will be called automatically for you. For example, Map and WeakMap are fully com
 A proxied method has precedence over auto-detected methods.
 
 ```
-Class Type {
+class Type {
     get(key) {
         // Called automatically because it is detected.
     },
@@ -88,7 +90,7 @@ Class Type {
 }
 
 access.register(Type, {
-    set(obj, value) {
+    set(obj, key, value) {
         //
     }
 });
