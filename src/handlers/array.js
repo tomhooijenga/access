@@ -18,5 +18,5 @@ access.register(Array, {
   },
   size(obj) {
     return obj.length;
-  }
+  },
 });

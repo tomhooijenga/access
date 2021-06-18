@@ -2,16 +2,16 @@ import access from '../access';
 
 const proxy = {
   get(obj, key) {
-    return obj.getItem(key);
+    return Object.prototype.hasOwnProperty.call(obj, key) ? obj.getItem(key) : undefined;
   },
   set(obj, key, value) {
     return obj.setItem(key, value);
   },
   has(obj, key) {
-    return obj.getItem(key) !== null;
+    return Object.prototype.hasOwnProperty.call(obj, key);
   },
   delete(obj, key) {
-    return obj.getItem(key) === null && obj.removeItem(key) === undefined;
+    return Object.prototype.hasOwnProperty.call(obj, key)  && obj.removeItem(key) === undefined;
   },
   clear(obj) {
     obj.clear();

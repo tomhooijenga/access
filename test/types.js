@@ -1,4 +1,10 @@
-const types = [
+const Storage = require('dom-storage');
+
+const localStorage = typeof window === 'object' && window.Storage
+    ? window.localStorage
+    : new Storage(null, {strict: true});
+
+module.exports = [
     {
         name: 'Object',
         key1: 'key',
@@ -23,10 +29,7 @@ const types = [
         key2: {},
         factory: () => new Map([['key', 'value']])
     },
-];
-
-if (typeof window === 'object' && window.Storage) {
-    types.push({
+    {
         name: 'Storage',
         key1: 'key',
         key2: 'new_key',
@@ -36,7 +39,5 @@ if (typeof window === 'object' && window.Storage) {
 
             return localStorage
         }
-    })
-}
-
-module.exports = types;
+    }
+];

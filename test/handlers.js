@@ -1,4 +1,4 @@
- const {access} = require('../dist');
+const {access} = require('../dist');
 const should = require('should');
 const types = require('./types');
 
