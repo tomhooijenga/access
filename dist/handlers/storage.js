@@ -8,16 +8,16 @@ var _access = _interopRequireDefault(require("../access"));
 
 var proxy = (0, _defineProperty2.default)({
   get: function get(obj, key) {
-    return obj.getItem(key);
+    return Object.prototype.hasOwnProperty.call(obj, key) ? obj.getItem(key) : undefined;
   },
   set: function set(obj, key, value) {
     return obj.setItem(key, value);
   },
   has: function has(obj, key) {
-    return obj.getItem(key) !== null;
+    return Object.prototype.hasOwnProperty.call(obj, key);
   },
   delete: function _delete(obj, key) {
-    return obj.getItem(key) === null && obj.removeItem(key) === undefined;
+    return Object.prototype.hasOwnProperty.call(obj, key) && obj.removeItem(key) === undefined;
   },
   clear: function clear(obj) {
     obj.clear();
