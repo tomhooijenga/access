@@ -3,12 +3,20 @@ const { access } = require('../dist');
 const types = require('./types');
 
 types.forEach(({
-  name, key1, key2, factory,
+  setup,
+  name,
+  key1,
+  key2,
+  factory,
 }) => {
   describe(name, () => {
     let obj;
 
     beforeEach(() => {
+      if (setup) {
+        setup();
+      }
+
       obj = factory();
     });
 
