@@ -1,4 +1,5 @@
 import './handlers/array';
+import './handlers/multi-dict';
 import './handlers/object';
 import './handlers/storage';
 

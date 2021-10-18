@@ -29,6 +29,7 @@
     "@babel/eslint-parser": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
+    "@teamawesome/multi-dict": "^2.0.2",
     "benchmark": "^2.1.4",
     "dom-storage": "^2.1.0",
     "eslint": "^7.32.0",

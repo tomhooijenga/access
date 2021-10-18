@@ -38,7 +38,13 @@ module.exports = [
       localStorage.clear();
       localStorage.setItem('key', 'value');
 
-            return localStorage
-        }
-    }
+      return localStorage;
+    },
+  },
+  {
+    name: '@teamawesome/multi-dict',
+    key1: [1, 2],
+    key2: [{}, 2],
+    factory: () => new Dictionary([[1, 2, 'value']]),
+  },
 ];
