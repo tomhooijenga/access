@@ -11,7 +11,7 @@ const proxy = {
     return Object.prototype.hasOwnProperty.call(obj, key);
   },
   delete(obj, key) {
-    return Object.prototype.hasOwnProperty.call(obj, key)  && obj.removeItem(key) === undefined;
+    return Object.prototype.hasOwnProperty.call(obj, key) && obj.removeItem(key) === undefined;
   },
   clear(obj) {
     obj.clear();

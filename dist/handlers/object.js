@@ -2,6 +2,11 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _access = _interopRequireDefault(require("../access"));
@@ -44,3 +49,6 @@ _access.default.register(Object, proxy); // Objects created without a prototype 
 
 
 _access.default.register(undefined, proxy);
+
+var _default = proxy;
+exports.default = _default;

@@ -5,9 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.types = exports.wrap = exports.access = exports.default = void 0;
+exports.wrap = exports.types = exports.default = exports.access = void 0;
 
 require("./handlers/array");
+
+require("./handlers/dom-string-map");
+
+require("./handlers/multi-dict");
 
 require("./handlers/object");
 
