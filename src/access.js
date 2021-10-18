@@ -1,4 +1,6 @@
-import {call0, call1, call2, read} from './call';
+import {
+  call0, call1, call2, read,
+} from './call';
 import types from './types';
 
 export default {
