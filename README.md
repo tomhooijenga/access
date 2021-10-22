@@ -4,6 +4,8 @@ Access provides a unified interface for all sorts of objects. Supported types ar
 * Object
 * Array
 * Storage (localStorage, sessionStorage)
+* [@teamawesome/multi-dict](https://www.npmjs.com/package/@teamawesome/multi-dict)
+* [DOMStringMap](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringMap) (dataset)
 * Map
 * WeakMap
 * __Any object with the map interface__
