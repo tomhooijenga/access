@@ -20,7 +20,7 @@ npm i @teamawesome/access
 # Usage
 The interface implements get, set, has, delete, clear, keys, values, entries and size.
 
-```
+```js
 import access from '@teamawesome/access';
 
 access.get(obj, key);
@@ -35,7 +35,7 @@ access.size(obj);
 ```
 Alternatively, wrap an object to provide the interface. An added benefit for this is better performance. Note that if
 a handler is necessary for the object, it must be registered before wrapping.
-```
+```js
 import { wrap } from '@teamawesome/access'
 
 const wrapped = wrap(obj);
@@ -56,11 +56,12 @@ wrapped.size;
 Objects that implement the Map interface are supported out of the box. To use your own type with access, you must
 register a handler for it.
 
-```
-Class Type {
+```js
+class Type {
     _getById(id) {
         //
-    },
+    }
+
     del(id) {
         //
     }
@@ -80,11 +81,11 @@ If a type implements one of the methods with the same signature, it is not neces
 will be called automatically for you. For example, Map and WeakMap are fully compatible without being registered.
 A proxied method has precedence over auto-detected methods.
 
-```
+```js
 class Type {
     get(key) {
         // Called automatically because it is detected.
-    },
+    }
     
     set(key, value) {
         // Not called automatically because it is proxied.
@@ -97,6 +98,7 @@ access.register(Type, {
     }
 });
 ```
+
 ## Handler information
 Access provides two helper functions to register and unregister types.
 ```js
