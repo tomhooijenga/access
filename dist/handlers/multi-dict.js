@@ -1,34 +1,29 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
-
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-
 var _access = _interopRequireDefault(require("../access"));
-
-var Dictionary;
-
+let Dictionary;
 try {
   // eslint-disable-next-line global-require,import/no-extraneous-dependencies
-  var _require = require('@teamawesome/multi-dict');
-
-  Dictionary = _require.default;
-} catch (e) {// Do nothing.
+  ({
+    default: Dictionary
+  } = require('@teamawesome/multi-dict'));
+} catch (e) {
+  // Do nothing.
 }
-
 if (Dictionary) {
   _access.default.register(Dictionary, {
-    get: function get(obj, key) {
-      return obj.get.apply(obj, (0, _toConsumableArray2.default)(key));
+    get(obj, key) {
+      return obj.get(...key);
     },
-    set: function set(obj, key, value) {
-      obj.set.apply(obj, (0, _toConsumableArray2.default)(key).concat([value]));
+    set(obj, key, value) {
+      obj.set(...key, value);
     },
-    has: function has(obj, key) {
-      return obj.has.apply(obj, (0, _toConsumableArray2.default)(key));
+    has(obj, key) {
+      return obj.has(...key);
     },
-    delete: function _delete(obj, key) {
-      return obj.delete.apply(obj, (0, _toConsumableArray2.default)(key));
+    delete(obj, key) {
+      return obj.delete(...key);
     }
   });
 }
