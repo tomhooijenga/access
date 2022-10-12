@@ -1,26 +1,24 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
-
 var _access = _interopRequireDefault(require("../access"));
-
 _access.default.register(Array, {
-  get: function get(obj, key) {
+  get(obj, key) {
     return obj[key];
   },
-  set: function set(obj, key, value) {
+  set(obj, key, value) {
     obj[key] = value;
   },
-  has: function has(obj, key) {
+  has(obj, key) {
     return key in obj;
   },
-  delete: function _delete(obj, key) {
+  delete(obj, key) {
     return obj.splice(key, 1).length === 1;
   },
-  clear: function clear(obj) {
+  clear(obj) {
     obj.length = 0;
   },
-  size: function size(obj) {
+  size(obj) {
     return obj.length;
   }
 });

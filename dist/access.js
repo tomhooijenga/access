@@ -1,16 +1,12 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 var _call = require("./call");
-
 var _types = _interopRequireDefault(require("./types"));
-
 var _default = {
   /**
    * Get a value by key
@@ -19,10 +15,9 @@ var _default = {
    * @param key
    * @return {*}
    */
-  get: function get(obj, key) {
+  get(obj, key) {
     return (0, _call.call1)(obj, 'get', key);
   },
-
   /**
    * Set the value of a key
    *
@@ -32,11 +27,10 @@ var _default = {
    * @param value
    * @return {T}
    */
-  set: function set(obj, key, value) {
+  set(obj, key, value) {
     (0, _call.call2)(obj, 'set', key, value);
     return obj;
   },
-
   /**
    * Does the object contain the key
    *
@@ -44,10 +38,9 @@ var _default = {
    * @param key
    * @return {bool}
    */
-  has: function has(obj, key) {
+  has(obj, key) {
     return (0, _call.call1)(obj, 'has', key);
   },
-
   /**
    * Delete the key
    *
@@ -55,75 +48,68 @@ var _default = {
    * @param key
    * @return {bool}
    */
-  delete: function _delete(obj, key) {
+  delete(obj, key) {
     return (0, _call.call1)(obj, 'delete', key);
   },
-
   /**
    * Remove all entries
    *
    * @param obj
    */
-  clear: function clear(obj) {
+  clear(obj) {
     (0, _call.call0)(obj, 'clear');
   },
-
   /**
    * Get the amount of properties
    *
    * @param obj
    * @returns {number}
    */
-  size: function size(obj) {
+  size(obj) {
     return (0, _call.read)(obj, 'size');
   },
-
   /**
    * Get the keys of the object
    *
    * @param obj
    * @return {IterableIterator}
    */
-  keys: function keys(obj) {
+  keys(obj) {
     return (0, _call.call0)(obj, 'keys');
   },
-
   /**
    * Get the values of the object
    *
    * @param obj
    * @return {IterableIterator}
    */
-  values: function values(obj) {
+  values(obj) {
     return (0, _call.call0)(obj, 'values');
   },
-
   /**
    * Get the entries of the object
    *
    * @param obj
    * @return {IterableIterator}
    */
-  entries: function entries(obj) {
+  entries(obj) {
     return (0, _call.call0)(obj, 'entries');
   },
-
   /**
    * Register a type
    *
    * @param {*} type
    * @param {{}} proxy
    */
-  register: function register(type, proxy) {
+  register(type, proxy) {
     _types.default.set(type, proxy);
   },
-
   /**
    * Remove a type
    *
    * @param type
    */
-  unregister: function unregister(type) {
+  unregister(type) {
     _types.default.delete(type);
   }
 };
