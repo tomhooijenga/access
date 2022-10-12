@@ -1,6 +1,6 @@
 {
   "name": "@teamawesome/access",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Provide a unified interface for objects.",
   "keywords": [
     "map",
@@ -18,7 +18,7 @@
     "test": "mocha",
     "benchmark:object": "node bench/object.js",
     "benchmark:map": "node bench/map.js",
-    "prepublishOnly": "npm run-script lint && npm run-script test && npm run-script build"
+    "prepublishOnly": "npm run lint && npm run build && npm run test"
   },
   "author": "Tom Hooijenga <tomhooijenga@gmail.com>",
   "homepage": "https://github.com/tomhooijenga/access",
