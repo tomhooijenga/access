@@ -35,11 +35,11 @@
     "eslint": "^8.25.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
-    "jsdom": "^20.0.1",
+    "jsdom": "^22.1.0",
     "mocha": "^10.0.0",
     "should": "^13.2.3",
     "should-sinon": "0.0.6",
-    "sinon": "^14.0.1"
+    "sinon": "^16.1.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4"
