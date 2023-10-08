@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _call = require("./call");
 var _types = _interopRequireDefault(require("./types"));
-var _default = {
+var _default = exports.default = {
   /**
    * Get a value by key
    *
@@ -113,4 +113,3 @@ var _default = {
     _types.default.delete(type);
   }
 };
-exports.default = _default;

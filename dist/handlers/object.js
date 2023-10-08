@@ -41,5 +41,4 @@ const proxy = {
 _access.default.register(Object, proxy);
 // Objects created without a prototype do not have a constructor
 _access.default.register(undefined, proxy);
-var _default = proxy;
-exports.default = _default;
+var _default = exports.default = proxy;
